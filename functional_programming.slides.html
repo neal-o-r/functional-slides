@@ -11905,7 +11905,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Funtional-Programming-for-Data-Science">Funtional Programming for Data Science<a class="anchor-link" href="#Funtional-Programming-for-Data-Science">&#182;</a></h1><hr>
+<h1 id="Functional-Programming-for-Data-Science">Functional Programming for Data Science<a class="anchor-link" href="#Functional-Programming-for-Data-Science">&#182;</a></h1><hr>
 <p><strong>Neal Ó Riain</strong></p>
 <p>PyData Dublin, 30$^\mathsf{th}$ August 2018</p>
 
@@ -11923,10 +11923,9 @@ a.anchor-link {
 </ul>
 <p><br></p>
 <ul>
-<li><p>Current Data Scientist at Amazon.</p>
-<p><br></p>
-</li>
+<li>Current Data Scientist at Amazon.</li>
 </ul>
+<p><br></p>
 <ul>
 <li>((Semi-) Pragmatic) Functional Programmer.</li>
 </ul>
@@ -12512,8 +12511,8 @@ $$g(f(x))$$
     <span class="n">p</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">50</span>
     <span class="k">return</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mi">1000</span>
 
-<span class="n">even_nums</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">nums_lt</span> <span class="o">=</span> <span class="n">takewhile</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">even_nums</span><span class="p">)</span>
+<span class="n">odd_nums</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">nums_lt</span> <span class="o">=</span> <span class="n">takewhile</span><span class="p">(</span><span class="n">predicate</span><span class="p">,</span> <span class="n">odd_nums</span><span class="p">)</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">nums_lt</span><span class="p">)</span>
 </pre></div>
 
@@ -12818,7 +12817,7 @@ $g(f,\; [x_1, x_2, x_3],\;i) \rightarrow f(i,\;f(x_1,\;f(x_2,\;x_3)))$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Currying">Currying<a class="anchor-link" href="#Currying">&#182;</a></h1><center>
-$f(x, y, x) \rightarrow f(x)(y)(z)$
+$f(x, y, z) \rightarrow f(x)(y)(z)$
 </center>
 </div>
 </div>
