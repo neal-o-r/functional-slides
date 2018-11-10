@@ -4,11 +4,14 @@ from string import punctuation
 from collections import defaultdict
 from glob import glob
 
+# punctuation mapping
 punc = str.maketrans({p: None for p in punctuation})
 
 
 def col_print(l, cols=5, width=12):
-
+    """
+    utility function to print in columns
+    """
     group = zip(*[l[i::cols] for i in range(cols)])
     for row in group:
         print("".join(word.ljust(width) for word in row))
