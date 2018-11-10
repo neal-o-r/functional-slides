@@ -27,6 +27,9 @@ def get_data(n):
 
 
 def model(theta, x):
+    """
+    apply linear model
+    """
     m, c = theta
     return m * x + c
 
@@ -36,19 +39,22 @@ def err(theta, x, y):
 
 
 def grad(theta, x, y):
-    m, c = theta
+    """
+    compute the gradient of the loss function
+    over all data
+    """
     N = len(x)
-    c_g = 0
-    m_g = 0
-    for xi, yi in zip(x, y):
-        e = err(theta, xi, yi)
-        c_g -= (2 / N) * e
-        m_g -= (2 / N) * xi * e
+    e = [err(theta, xi, yi) for xi, yi in zip(x, y)]
+    c_g = [-2 / N * ei for ei in e]
+    m_g = [-2 / N * ei * xi for ei, xi in zip(e, x)]
 
-    return [m_g, c_g]
+    return [sum(m_g), sum(c_g)]
 
 
 def sgd_step(x, y, theta):
+    """
+    take a single gradient step
+    """
     lr = 0.001
     m, c = theta
     m_g, c_g = grad(theta, x, y)
@@ -58,6 +64,9 @@ def sgd_step(x, y, theta):
 
 
 def sgd(theta, x, y):
+    """
+    continue taking grad steps until conevrgence, ie. until grad == 0
+    """
     step = tz.curry(sgd_step)(x)(y)
     return until_convergence(tz.iterate(step, theta))
 
