@@ -2,9 +2,10 @@ import toolz as tz
 import random
 import itertools
 import math
+from operator import sub
 
 
-def until_convergence(it):
+def until_convergence(it, eq=lambda x: x[0] != x[1]):
     """
     takes a (potentially infinite) iterator and returns the
     first value at which it repeats itself.
@@ -13,8 +14,7 @@ def until_convergence(it):
     """
     it2 = tz.drop(1, it)
     pairs = zip(it, it2)
-    zip_eq = lambda x: x[0] != x[1]
-    return tz.first(itertools.dropwhile(zip_eq, pairs))[0]
+    return tz.first(itertools.dropwhile(eq, pairs))[0]
 
 
 def get_data(n):
@@ -68,7 +68,8 @@ def sgd(theta, x, y):
     continue taking grad steps until conevrgence, ie. until grad == 0
     """
     step = tz.curry(sgd_step)(x)(y)
-    return until_convergence(tz.iterate(step, theta))
+    converge = lambda x: abs(sum(map(sub, x[0], x[1]))) > 1e-5
+    return until_convergence(tz.iterate(step, theta), converge)
 
 
 if __name__ == "__main__":
